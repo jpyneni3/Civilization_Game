@@ -1,39 +1,40 @@
 import java.util.Scanner;
 public class Civilization {
     //global variables
-    static boolean playing = true; //necessary to start and end the game
-    static Scanner scan = new Scanner (System.in);//to recieve inputs from user
-    static String leaderName = new String();
-    static String civName = new String();
-    static String cities [] = new String [5]; //array of cities
-    static int attacks;
-    static double gold=20.5;
-    static double resources=30.0;
-    static int happiness=10;
-    static int militaryUnits;
-    static int techPoints;
-    static String firstCity;
-    static int cityCount;
+    private static boolean playing = true; //necessary to start and end the game
+    private static Scanner scan = new Scanner(System.in); //to recieve inputs from user
+    private static String leaderName = new String();
+    private static String civName = new String();
+    private static String[]cities = new String[5]; //array of cities
+    private static int attacks;
+    private static double gold = 20.5;
+    private static double resources = 30.0;
+    private static int happiness = 10;
+    private static int militaryUnits;
+    private static int techPoints;
+    private static String firstCity;
+    private static int cityCount;
 
 
     public static void main(String[] args) {
-       while(playing) {
+        while (playing) {
              //Your game code here
 
             //Use this to break out of the game loop.
             //Feel free to move it around.
-        System.out.println("CIVILIZATION");
-        System.out.println("Welcome! Please enter the number for the civilization that you want to lead");//prompt user to select civilization
-        civSelect(); //method to have the user select the civilization he or she wants to lead
-        System.out.println("\nHello "+leaderName+", let's get started on building the "+civName+" civilization!");
-        settleFirstCity();
-        playing = false;
+            System.out.println("CIVILIZATION");
+            System.out.print("Welcome! Please enter the number");
+            System.out.println(" for the civilization that you want to lead");
+            civSelect(); //method to have the user select the civilization he or she wants to lead
+            System.out.println("\nHello "+leaderName+", let's get started on building the "+civName+" civilization!");
+            settleFirstCity();
+            playing = false;
         }
 
         System.out.println("Game Over!");
     }
 
-    public static void civSelect(){
+    public static void civSelect() {
     	System.out.print("1.American\n2.Zulu\n3.English\n4.Chinese\n");
         int i = scan.nextInt();
         scan.nextLine();
