@@ -107,6 +107,7 @@ public class Civilization {
         attackCity();
                 }
       else if (i==6){
+            addProperties();
             nextTurn();
                 }
       else {
@@ -151,7 +152,7 @@ public class Civilization {
       }
     }
     public static void addProperties(){//this method will be at the end of the turn methods to add the values that the user gets after every turn
-      resources+=1;
+      resources+=1.0;
       if(happiness>20){
         resources+=5*cityCount;
       }
@@ -206,6 +207,7 @@ public class Civilization {
       if (city==cityCount){
         cities[city-1]=null;
         cityCount--;
+        resources+=1.5;
         addProperties();
         nextTurn();
       }
@@ -214,6 +216,7 @@ public class Civilization {
         cities[i-1]=cities[city];
       }
       cityCount--;
+      resources+=1.5;
       addProperties();
       nextTurn();
     }
