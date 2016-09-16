@@ -2,7 +2,7 @@ import java.util.Scanner;
 public class Civilization {
     //global variables
     private static boolean playing = true; //necessary to start and end the game
-    private static Scanner scan = new Scanner(System.in); //to recieve inputs from user
+    private static Scanner scan = new Scanner(System.in); //for inputs from user
     private static String leaderName = new String();
     private static String civName = new String();
     private static String[]cities = new String[5]; //array of cities
@@ -25,8 +25,9 @@ public class Civilization {
             System.out.println("CIVILIZATION");
             System.out.print("Welcome! Please enter the number");
             System.out.println(" for the civilization that you want to lead");
-            civSelect(); //method to have the user select the civilization he or she wants to lead
-            System.out.println("\nHello "+leaderName+", let's get started on building the "+civName+" civilization!");
+            civSelect(); //method for user to select their civilization
+            System.out.print("\nHello " + leaderName + ", let's get started ");
+            System.out.println("on building the " + civName + " civilization!");
             settleFirstCity();
             playing = false;
         }
@@ -35,79 +36,79 @@ public class Civilization {
     }
 
     public static void civSelect() {
-    	System.out.print("1.American\n2.Zulu\n3.English\n4.Chinese\n");
+        System.out.print("1.American\n2.Zulu\n3.English\n4.Chinese\n");
         int i = scan.nextInt();
         scan.nextLine();
-        if (i==1){
-            leaderName= "George Washington";
-            civName= "American";
+        if (i == 1) {
+            leaderName = "George Washington";
+            civName = "American";
         }
-        else if (i==2){
-            leaderName= "Shaka";
-            civName="Zulu";
+        else if (i == 2) {
+            leaderName = "Shaka";
+            civName = "Zulu";
         }
-        else if (i==3){
-            leaderName="Queen Elizabeth";
-            civName="English";
+        else if (i == 3) {
+            leaderName = "Queen Elizabeth";
+            civName = "English";
         }
-        else if (i==4){
-            leaderName="Wu Zetian";
-            civName="Chinese";
+        else if (i == 4) {
+            leaderName = "Wu Zetian";
+            civName = "Chinese";
         }
         else {
             System.out.println("Incorrect number, please try again!");
             civSelect();
         }
     }
-    public static void settleFirstCity(){
+    public static void settleFirstCity() {
       System.out.println(leaderName+ ", what would you like to name your first city?");
-      firstCity=scan.nextLine();
-      cities[0]=firstCity;
+      firstCity = scan.nextLine();
+      cities[0] = firstCity;
       cityCount++;
       nextTurn();
     }
-    public static void printProperties(){
+    public static void printProperties() {
       System.out.println("Here is a list of your properties, "+leaderName);
       System.out.println();
       System.out.print("Cities: ");
       for (int i=0; i<cityCount-1; i++){
-        System.out.print(cities[i]+", ");
+        System.out.print(cities[i] + ", ");
         }
         System.out.println(cities[cityCount-1]);
-      System.out.println("Number of Attacks: "+attacks);
-      System.out.println("Gold: "+gold);
-      System.out.println("Resources: "+resources);
-      System.out.println("Happiness: "+happiness);
-      System.out.println("Military Units: "+militaryUnits);
-      System.out.println("Technology Points: "+techPoints);
+      System.out.println("Number of Attacks: " + attacks);
+      System.out.println("Gold: " + gold);
+      System.out.println("Resources: " + resources);
+      System.out.println("Happiness: " + happiness);
+      System.out.println("Military Units: " + militaryUnits);
+      System.out.println("Technology Points: " + techPoints);
       System.out.println();
     }
-    public static void nextTurn(){
+    public static void nextTurn() {
       checkWin();
-      if (playing==false){
+      if (playing == false){
         return;
       }
       printProperties();
       System.out.println(leaderName+", you have 6 options of what you can do next. Please select an option by entering the corresponding number to that action.");
       System.out.println("1.Settle a City\n2.Demolish a City\n3.Build Milita\n4.Research Technology\n5.Attack Enemy City\n6.End Turn");
-      int i= scan.nextInt();
+      int i = scan.nextInt();
       scan.nextLine();
-      if (i==1){
+      if (i == 1){
           settleCity();
       }
-      else if (i==2){
+      else if (i == 2) {
         demCity();
       }
-      else if (i==3){
+      else if (i == 3) {
         buildMilitia();
             }
-      else if (i==4){
+      else if (i == 4) {
         researchTech();
       }
-      else if (i==5){
+      else if (i == 5) {
         attackCity();
                 }
-      else if (i==6){
+      else if (i == 6) {
             addProperties();
             nextTurn();
                 }
@@ -115,30 +116,27 @@ public class Civilization {
       System.out.println("Incorrect number, please try again!");
       retryTurn();
                 }
-
-
-
     }
-    public static void retryTurn(){
-      System.out.println(leaderName+", you have 6 options of what you can do next. Please select an option by entering the corresponding number to that action.");
+    public static void retryTurn() {
+      System.out.println(leaderName +", you have 6 options of what you can do next. Please select an option by entering the corresponding number to that action.");
       System.out.println("1.Settle a City\n2.Demolish a City\n3.Build Milita\n4.Research Technology\n5.Attack Enemy City\n6.End Turn");
-      int i= scan.nextInt();
-      if (i==1){
+      int i = scan.nextInt();
+      if (i == 1) {
           settleCity();
       }
-      else if (i==2){
+      else if (i == 2) {
         demCity();
       }
-      else if (i==3){
+      else if (i == 3) {
         buildMilitia();
             }
-      else if (i==4){
+      else if (i == 4) {
         researchTech();
       }
-      else if (i==5){
+      else if (i == 5) {
         attackCity();
                 }
-      else if (i==6){
+      else if (i == 6) {
            addProperties();
            nextTurn();
                 }
@@ -147,19 +145,19 @@ public class Civilization {
       retryTurn();
     }
   }
-    public static void checkWin(){
-      if (techPoints==20||attacks==10){
+    public static void checkWin() {
+      if (techPoints == 20 || attacks == 10) {
         playing=false;
       }
     }
-    public static void addProperties(){//this method will be at the end of the turn methods to add the values that the user gets after every turn
-      resources+=1.0;
-      if(happiness>20){
-        resources+=5*cityCount;
+    public static void addProperties (){//this method will be at the end of the turn methods to add the values that the user gets after every turn
+      resources += 1.0;
+      if(happiness > 20) {
+        resources += 5*cityCount;
       }
-      gold+=3*cityCount;
-      if (resources%2==0){
-        happiness+=1;
+      gold += 3*cityCount;
+      if (resources%2 == 0){
+        happiness += 1;
       }
       if (resources%2!=0){
         happiness-=3;
