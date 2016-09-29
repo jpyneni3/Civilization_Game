@@ -37,7 +37,7 @@ public class Technology {
     public boolean hasTechnologyWin() {
         checkExpLevel();
         checkUnderstanding();
-        return foundMeaningOfLife && !builtWonderOfTheWorld;
+        return foundMeaningOfLife && builtWonderOfTheWorld;
     }
 
     public int getUnderstanding() {

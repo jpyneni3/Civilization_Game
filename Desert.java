@@ -7,7 +7,7 @@ public class Desert {
 
     public int findTreasure() {
         int randLost = r.nextInt(10);
-        if (randLost == 0) { //10% because 0 is one of the 10 possible numbers
+        if (randLost == 1) { //10% because 1 is one of the 10 possible numbers
             do {
                 lost();
             } while (lost());

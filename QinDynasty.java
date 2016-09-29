@@ -38,7 +38,7 @@ public class QinDynasty {
     public boolean buildHouse(Settlement s) {
         Building house = new Building(30, 8);
         if (treasuryQin.getCoins() >= 30 && populationQin.canWork(8)) {
-            treasuryQin.spend(1000);
+            treasuryQin.spend(30);
             technologyQin.increaseExperience(10);
             s.addBuilding(house);
             return true;
@@ -49,9 +49,9 @@ public class QinDynasty {
 
 
     public void establishLegalism() {
-        technologyQin.philosophize();
         if (populationQin.getHappiness() >= 20) {
             populationQin.decreaseHappiness(20);
+            technologyQin.philosophize();
         }
     }
     public Strategy getStrategy() {

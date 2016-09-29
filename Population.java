@@ -19,11 +19,10 @@ public class Population {
     }
 
     public boolean decreaseHappiness(int decHap) {
-        if (happiness > decHap) {
+        if (happiness >= decHap) {
             happiness -= decHap;
             return true;
         } else {
-            happiness = 0;
             return false;
         }
     }
