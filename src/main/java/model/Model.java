@@ -221,8 +221,26 @@ public class Model {
     }
 
     public static boolean attackSelected(int r, int c) {
-        // TODO: Make this actually work :D
-        return false;
+        if (map.getColumns() <= c || map.getRows() <= r) { //to ensure that
+            //there is a MapObject at the input tiles
+            return false;
+        }
+        if (map.isEmpty(r, c)) {
+            return false;
+        }
+        if (map.getTile(r, c).getOccupant().getOwner() == playerCivilization) {
+            return false;
+        }
+        if (!((MilitaryUnit) (selected.getOccupant())).getCanAttack()) {
+            return false;
+        }
+        MilitaryUnit occupant1 = (MilitaryUnit) (selected.getOccupant());
+        MapObject attacked = map.getTile(r, c).getOccupant();
+        occupant1.attack(attacked);
+        if (attacked.isDestroyed()) {
+            map.getTile(r, c).setOccupant(null);
+        }
+        return true;
     }
 
     public static boolean convertSelected() {
