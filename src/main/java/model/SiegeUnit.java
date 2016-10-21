@@ -18,7 +18,7 @@ class SiegeUnit extends MilitaryUnit {
 
     @Override
     public String toString() {
-        return "Ranged Unit. " + super.toString();
+        return "Siege Unit. " + super.toString();
     }
     @Override
     public void attack(MapObject mapObj) {
