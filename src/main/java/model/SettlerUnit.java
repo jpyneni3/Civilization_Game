@@ -9,7 +9,7 @@ public class SettlerUnit extends Unit implements Convertable {
     }
 
     public char symbol() {
-        return 'm';
+        return 's';
     }
 
     public Building convert() {
