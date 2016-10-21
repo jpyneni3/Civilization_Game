@@ -36,7 +36,7 @@ abstract class MilitaryUnit extends Unit {
 
     @Override
     public String toString() {
-        return "Military Unit" + super.toString();
+        return "Military Unit. " + super.toString();
     }
 
 
