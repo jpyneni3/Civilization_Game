@@ -27,7 +27,9 @@ class MySet<E> implements SimpleSet<E> {
         return false;
     }
     public boolean add(E e) {
-        if (this.contains(e)) return false;
+        if (this.contains(e)) {
+            return false;
+        }
         int newLength = arrayLen + 1;
         E[] newSet = (E[]) new Object[newLength];
         for (int i = 0; i < arrayLen; i++) {

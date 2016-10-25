@@ -28,10 +28,13 @@ class Technology {
      * method in the Skill class)
      */
     public void gainATech() {
-        techPoints++;
-        int newLength = skills.size() + 1;
-        while (skills.size() < newLength) {
-            skills.add(Skill.getRandomSkill());
+        if (skills.size() < 20) {
+            techPoints++;
+            int newLength = skills.size() + 1;
+            boolean added = false;
+            while (!added) {
+                added = skills.add(Skill.getRandomSkill());
+            }
         }
     }
 
