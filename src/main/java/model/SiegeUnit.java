@@ -1,30 +1,42 @@
 package model;
 
+/**
+ * Represents a Siege unit.
+ *
+ * @version 1.0
+ * @author Jim Harris
+ */
 class SiegeUnit extends MilitaryUnit {
 
+    /**
+     * Public constructor.
+     *
+     * @param owner the owner of this unit.
+     */
     public SiegeUnit(Civilization owner) {
         super(200, owner, 5, 10, 14, 5, 10, 60);
     }
 
-    public char symbol() {
-        return 'S';
+    @Override
+    public void attack(MapObject o) {
+        getOwner().getStrategy().siege();
+        battle(o);
     }
 
-    public void battle(MapObject mapObj) {
-        if (mapObj instanceof Building) {
-            mapObj.damage(getDamage());
+    @Override
+    public void battle(MapObject o) {
+        if (o instanceof Building) {
+            o.damage(this.getDamage());
         }
+    }
+
+    @Override
+    public char symbol() {
+        return 'S';
     }
 
     @Override
     public String toString() {
         return "Siege Unit. " + super.toString();
     }
-    @Override
-    public void attack(MapObject mapObj) {
-        battle(mapObj);
-        setCanAttack(false);
-    }
-
-
 }
