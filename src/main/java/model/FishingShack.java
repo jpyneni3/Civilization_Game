@@ -74,7 +74,7 @@ class FishingShack extends Building {
         if (!fish.isEmpty()) {
             return false;
         } else {
-            while (fish.size() <= 5) {
+            while (fish.size() < 5) {
                 int w = rand.nextInt(5);
                 int l = rand.nextInt(5);
                 fish.add(new Fish(w, l));

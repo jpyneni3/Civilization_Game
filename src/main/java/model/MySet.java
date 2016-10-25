@@ -20,13 +20,14 @@ class MySet<E> implements SimpleSet<E> {
     }
     public boolean contains(E e) {
         for (int i = 0; i < arrayLen; i++) {
-            if (e == set[i]) {
+            if (e.equals(set[i])) {
                 return true;
             }
         }
         return false;
     }
     public boolean add(E e) {
+        if (this.contains(e)) return false;
         int newLength = arrayLen + 1;
         E[] newSet = (E[]) new Object[newLength];
         for (int i = 0; i < arrayLen; i++) {
@@ -101,11 +102,8 @@ class MySet<E> implements SimpleSet<E> {
     @Override
     public String toString() {
         String s = "Your set contains: ";
-        for (int i = 0; i < this.size() - 1; i++) {
+        for (int i = 0; i < this.size(); i++) {
             s += set[i] + " ";
-        }
-        for (int i = this.size() - 1; i < this.size(); i++) {
-            s += set[i];
         }
         return s;
     }
