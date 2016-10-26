@@ -7,6 +7,7 @@ class MySet<E> implements SimpleSet<E> {
     private int arrayLen;
     private static final int INITIAL_ARRAY_LENGTH = 0;
 
+    @SuppressWarnings("unchecked")
     public MySet() {
         set = (E[]) new Object[INITIAL_ARRAY_LENGTH];
         arrayLen = set.length;
@@ -26,6 +27,8 @@ class MySet<E> implements SimpleSet<E> {
         }
         return false;
     }
+
+    @SuppressWarnings("unchecked")
     public boolean add(E e) {
         if (this.contains(e)) {
             return false;
@@ -40,6 +43,8 @@ class MySet<E> implements SimpleSet<E> {
         arrayLen++;
         return true;
     }
+
+    @SuppressWarnings("unchecked")
     public E remove(E e) throws ElementDoesNotExistException {
         if (!this.contains(e)) {
             throw new ElementDoesNotExistException("This does not exist", e);
@@ -68,6 +73,7 @@ class MySet<E> implements SimpleSet<E> {
         }
     }
 
+    @SuppressWarnings("unchecked")
     public E[] removeAll(E[] e) throws ElementDoesNotExistException {
         int passedArrayLength = e.length;
         for (int i = 0; i < passedArrayLength; i++) {
@@ -82,6 +88,8 @@ class MySet<E> implements SimpleSet<E> {
         }
         return p;
     }
+
+    @SuppressWarnings("unchecked")
     public void clear() {
         E[] newSet = (E[]) new Object[INITIAL_ARRAY_LENGTH];
         set = newSet;
