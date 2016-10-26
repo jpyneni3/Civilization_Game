@@ -61,24 +61,26 @@ class MySet<E> implements SimpleSet<E> {
             for (int i = indexOfE; i < newLength; i++) {
                 newSet[i] = set[i + 1];
             }
+            E p = set[indexOfE];
             set = newSet;
             arrayLen--;
-            return e;
+            return p;
         }
     }
 
     public E[] removeAll(E[] e) throws ElementDoesNotExistException {
-        int arrayLength = e.length;
-        for (int i = 0; i < arrayLength; i++) {
+        int passedArrayLength = e.length;
+        for (int i = 0; i < passedArrayLength; i++) {
             if (!this.contains(e[i])) {
                 throw  new
                 ElementDoesNotExistException("This does not exist", e[i]);
             }
         }
-        for (int i = 0; i < arrayLength; i++) {
-            this.remove(e[i]);
+        E[] p = (E[]) new Object[passedArrayLength];
+        for (int i = 0; i < passedArrayLength; i++) {
+            p[i] = this.remove(e[i]);
         }
-        return e;
+        return p;
     }
     public void clear() {
         E[] newSet = (E[]) new Object[INITIAL_ARRAY_LENGTH];
