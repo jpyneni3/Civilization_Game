@@ -30,7 +30,7 @@ class Technology {
     public void gainATech() {
         if (skills.size() < 20) {
             techPoints++;
-            int newLength = skills.size() + 1;
+            //int newLength = skills.size() + 1;
             boolean added = false;
             while (!added) {
                 added = skills.add(Skill.getRandomSkill());
