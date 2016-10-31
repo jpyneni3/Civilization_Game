@@ -78,7 +78,7 @@ class MySet<E> implements SimpleSet<E> {
         int passedArrayLength = e.length;
         for (int i = 0; i < passedArrayLength; i++) {
             if (!this.contains(e[i])) {
-                throw  new
+                throw new
                 ElementDoesNotExistException("This does not exist", e[i]);
             }
         }
