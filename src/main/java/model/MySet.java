@@ -150,18 +150,17 @@ class MySet<E> implements SimpleSet<E>, Iterable<E> {
     }
 
     @Override
-    @SuppressWarnings("unchecked")
-  public Iterator<E> iterator() {
+    public Iterator<E> iterator() {
         return new MySetIterator();
     }
 
     private class MySetIterator implements Iterator<E> {
         private int counter = 0;
-        private boolean removed = false;
+        private boolean removed = true;
 
 
         public boolean hasNext() {
-            return counter <= numElements;
+            return counter < numElements;
         }
 
         public E next() {
