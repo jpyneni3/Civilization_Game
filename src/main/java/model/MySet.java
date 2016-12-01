@@ -1,8 +1,6 @@
 package model;
 
 import java.util.Random;
-import java.util.Iterator;
-import java.util.NoSuchElementException;
 
 /**
  * Represents a custom Set data structure.
@@ -10,7 +8,7 @@ import java.util.NoSuchElementException;
  * @author Ryan Voor
  * @version 1.0
  */
-class MySet<E> implements SimpleSet<E>, Iterable<E> {
+class MySet<E> implements SimpleSet<E> {
 
     private E[] data;
     private int numElements;
@@ -53,7 +51,7 @@ class MySet<E> implements SimpleSet<E>, Iterable<E> {
             if (data[i].equals(e)) {
                 E toBeReturned = data[i];
                 data[i] = null;
-                for (int j = i; j < numElements - 1; j++) {
+                for (int j = i; j < numElements; j++) {
                     data[j] = data[j + 1];
                 }
                 numElements--;
@@ -76,11 +74,9 @@ class MySet<E> implements SimpleSet<E>, Iterable<E> {
         E[] results = (E[]) new Object[elements.length];
         int counter = 0;
         for (E element: elements) {
-            // this guard is in case there are duplicate elements in the
-            // parameter array
-            if (this.contains(element)) {
-                results[counter++] = this.remove(element);
-            }
+            // hypothetically a ElementDoesNotExistException should never
+            // get thrown from this call since we checked above
+            results[counter++] = this.remove(element);
         }
         return results;
     }
@@ -147,48 +143,5 @@ class MySet<E> implements SimpleSet<E>, Iterable<E> {
             newArray[i] = data[i];
         }
         data = newArray;
-    }
-
-    @Override
-    public Iterator<E> iterator() {
-        return new MySetIterator();
-    }
-
-    private class MySetIterator implements Iterator<E> {
-        private int counter = 0;
-        private boolean removed = true;
-
-
-        public boolean hasNext() {
-            return counter < numElements;
-        }
-
-        public E next() {
-            if (!hasNext()) {
-                throw new NoSuchElementException();
-            } else {
-                removed = false;
-                return data[counter++];
-            }
-        }
-
-        public void remove() {
-            if (removed) {
-                throw new IllegalStateException();
-            }
-            counter--;
-            removed = true;
-            try {
-                MySet.this.remove(data[counter]);
-            } catch (ElementDoesNotExistException e) {
-                System.out.println("Something did not go right");
-                counter++;
-                removed = false;
-            }
-        }
-
-
-
-
     }
 }
