@@ -131,7 +131,7 @@ public class GameController {
                         end.getType().getCost()))) {
             if (start.getOccupant().getOwner()
                             == GameController.getCivilization()) {
-                err = new Alert(AlertType.ERROR);
+                Alert err = new Alert(AlertType.ERROR);
                 err.setContentText("You cannot move here!");
                 err.setTitle("Cannot move!");
                 err.showAndWait();
