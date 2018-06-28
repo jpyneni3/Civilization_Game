@@ -5,5 +5,8 @@ I developed this game in the Fall of 2016 for CS 1331. It was our semester proje
 To manually compile: <br>
 javac -cp src/main/java src/main/java/runner/*.java src/main/java/model/*.java src/main/java/view/*.java src/main/java/controller/*.java
 
-to manually run: <br>
+To manually run: <br>
 java -cp src/main/java runner.CivilizationGame
+
+<br>
+Or run the appropriate bash script
